@@ -1,0 +1,60 @@
+{% include "header.html" %}
+<body>
+  <main id="main">
+
+    <!-- ======= Search Results ======= -->
+    <section id="search-result" class="search-result">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <h3 class="category-title">Search Results</h3>
+
+            {% for n in searchedResult %}
+             <form action="/single-post" name="sendData" method="GET">
+              <input type="hidden" name="id" value="{{n.id}}">
+              <div class="d-md-flex post-entry-2 small-img" onclick="document.forms['sendData'].submit();">
+                <a href="/single-post/{{n.url}}" class="me-4 thumbnail">
+                  <img src="/media/{{n.banner}}" alt="" class="img-fluid">
+                </a>
+                <div>
+                  <div class="post-meta"><span class="date">{{n.category}}</span> <span class="mx-1">&bullet;</span> <span>{{n.date}}</span></div>
+                  <h3><a href="/single-post/{{n.url}}">{{n.Title}}</a></h3>
+                  <p>{{n.description}}</p>
+                  <div class="d-flex align-items-center author">
+                    <div class="photo"><img src="/media/images/person.png" alt="" class="img-fluid"></div>
+                    <div class="name">
+                      <h3 class="m-0 p-0">{{n.author}}</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+             </form>
+            {%empty%}
+            <div class="alert alert-warning" role="alert">
+              <h1> NO SUCH DATA FOUND</h1>
+            </div>
+            {% endfor %}
+            <div class="text-start py-4">
+              <div class="custom-pagination">
+                  {% if bySearch and searchedResult.has_previous %}
+                  <a href="?searchData={{searchData}}&page={{searchedResult.previous_page_number}}" tabindex="-1" class="prev">Previous</a>
+                  
+                  {% elif bySearch %}
+                  {% for n in totalPageList %}
+                  <a href="?searchData={{searchData}}&page={{n}}" tabindex="{{n}}">{{n}}</a>
+                  {% endfor %}
+                  {% endif %}
+                  {% comment %} {% else %} {% endcomment %}
+                  {% if searchedResult.has_next %}
+                  <a href="?searchData={{searchData}}&page={{searchedResult.next_page_number}}" class="next">Next</a>
+                  <a href="?searchData={{searchData}}&page={{lastPage}}" class="next">Last</a>
+                  {% endif %}
+                  
+                </div>
+              </div><!-- End Paging -->
+
+          </div>
+
+          {% include "Sidebar.html" %}         
+  {% include "footer.html" %}

@@ -1,0 +1,47 @@
+{% include "header.html" %}
+<style>
+        .calculatorForm{
+            margin:100px   
+        }
+</style>
+<div class="calculatorForm">
+    <h1 class="display-3">Calculator</h1>
+    <form method='POST' class="row g-3 needs-validation" novalidate>
+        {% csrf_token %}
+        <br><br>
+    <div class="mb-3">
+      <input type="{{hidden}}" 
+        class="form-control" disabled name="result" id="" aria-describedby="helpId" placeholder="" value="{{operation}} {{result}}">
+    </div>
+    <br>
+        <div class="mb-3">
+        <label for="" class="form-label">Value 1</label>
+        <input type="Number"
+            class="form-control" name="value1" id="value2" aria-describedby="helpId" placeholder="{{value1}}">
+        <small id="helpId" class="form-text text-muted">Enter First Integer Value</small>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Operation</label>
+            <select class="form-select form-select-lg" name="operation" id="">
+                <option value="+" selected>+ (Addition)</option>
+                <option value="-">- (Subtraction)</option>
+                <option value="*">* (Multiplication)</option>
+                <option value="/">/ (Division)</option>
+            </select>
+        </div>
+        <div class="mb-3">
+        <label for="" class="form-label">Value 2</label>
+        <input type="Number"
+            class="form-control" name="value2" id="value2" aria-describedby="helpId" placeholder="{{value2}}">
+        <small id="helpId" class="form-text text-muted">Enter Second Integer Value</small>
+        </div>
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+    </form>
+</div>   
+    <br><br><br>
+
+
+
+{% include "footer.html" %}

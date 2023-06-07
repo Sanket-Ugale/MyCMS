@@ -1,0 +1,143 @@
+{% include "header.html" %}
+<body>
+
+  <main id="main">
+
+    <!-- ======= Hero Slider Section ======= -->
+    <section id="hero-slider" class="hero-slider">
+      <div class="container-md" data-aos="fade-in">
+        <div class="row">
+          <div class="col-12">
+            <div class="swiper sliderFeaturedPosts">
+              <div class="swiper-wrapper">
+
+                {% for blog in latestBlogData %}
+                <div class="swiper-slide">
+                  <a href="/single-post/{{blog.url}}" class="img-bg d-flex align-items-end" style="background-image: url('/media/{{blog.banner}}');">
+                    <div class="img-bg-inner">
+                      <h2>{{blog.Title}}</h2>
+                      <p>{{blog.description}}</p>
+                    </div>
+                  </a>
+                </div>
+                
+                {% endfor %}
+              </div>
+              <div class="custom-swiper-button-next">
+                <span class="bi-chevron-right"></span>
+              </div>
+              <div class="custom-swiper-button-prev">
+                <span class="bi-chevron-left"></span>
+              </div>
+
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Hero Slider Section -->
+
+   {% for cat in Categories %}
+   
+   {% comment %} {% for categoryData in categoryData|in_category:cat.category%} {% endcomment %}
+    <!-- ======= Culture Category Section ======= -->
+    <section class="category-section">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header d-flex justify-content-between align-items-center mb-5">
+          <h2>{{cat.category}}</h2>
+          <div><a href="/category/?category={{cat.category}}" class="more">See All {{cat.category}}</a></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-9">
+
+            <div class="d-lg-flex post-entry-2">
+              <a href="/single-post/{{categoryData.1.url}}" class="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
+                <img src="/media/{{categoryData.1.banner}}" alt="" class="img-fluid">
+              </a>
+              <div>
+                {% comment %} <div class="post-meta"><span class="date">{{categoryData.date|get_category:cat}}</span> <span class="mx-1">&bullet;</span> <span>{{categoryData.date|get_category:cat}}</span></div>
+                <h3><a href="/single-post">{{categoryData.Title|get_category:cat}}</a></h3>
+                <p>{{categoryData.description|get_category:cat}}</p>
+                <div class="d-flex align-items-center author">
+                  <div class="photo"><img src="/static/assets/img/person.png" alt="" class="img-fluid"></div>
+                  <div class="name">
+                    <h3 class="m-0 p-0">{{categoryData.author|get_category:cat}}</h3>
+                  </div>
+                </div>{% endcomment %}
+              </div> 
+            </div>
+
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="post-entry-1 border-bottom">
+                  <a href="/single-post/{{categoryData.2.url}}"><img src="/media/{{categoryData.2.banner}}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">{{categoryData.2.category}}</span> <span class="mx-1">&bullet;</span> <span>{{categoryData.2.date}}</span></div>
+                  <h2 class="mb-2"><a href="/single-post/{{categoryData.2.url}}">{{categoryData.2.Title}}</a></h2>
+                  <span class="author mb-3 d-block">{{categoryData.2.author}}</span>
+                  <p class="mb-4 d-block">{{categoryData.2.description}}</p>
+                </div>
+
+                <div class="post-entry-1">
+                  <div class="post-meta"><span class="date">{{categoryData.3.category}}</span> <span class="mx-1">&bullet;</span> <span>{{categoryData.3.date}}</span></div>
+                  <h2 class="mb-2"><a href="/single-post/{{categoryData.3.url}}">{{categoryData.3.Title}}</a></h2>
+                  <span class="author mb-3 d-block">{{categoryData.3.author}}</span>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="post-entry-1">
+                  <a href="/single-post/{{categoryData.4.url}}"><img src="/media/{{categoryData.4.banner}}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">{{categoryData.4.category}}</span> <span class="mx-1">&bullet;</span> <span>{{categoryData.4.date}}</span></div>
+                  <h2 class="mb-2"><a href="/single-post/{{categoryData.4.url}}">{{categoryData.4.Title}}</a></h2>
+                  <span class="author mb-3 d-block">{{categoryData.4.author}}</span>
+                  <p class="mb-4 d-block">{{categoryData.4.description}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="post-entry-1 border-bottom">
+              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="/single-post">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
+              <span class="author mb-3 d-block">Jenny Wilson</span>
+            </div>
+
+            <div class="post-entry-1 border-bottom">
+              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="/single-post">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
+              <span class="author mb-3 d-block">Jenny Wilson</span>
+            </div>
+
+            <div class="post-entry-1 border-bottom">
+              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="/single-post">9 Half-up/half-down Hairstyles for Long and Medium Hair</a></h2>
+              <span class="author mb-3 d-block">Jenny Wilson</span>
+            </div>
+
+            <div class="post-entry-1 border-bottom">
+              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="/single-post">Life Insurance And Pregnancy: A Working Mom’s Guide</a></h2>
+              <span class="author mb-3 d-block">Jenny Wilson</span>
+            </div>
+
+            <div class="post-entry-1 border-bottom">
+              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="/single-post">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
+              <span class="author mb-3 d-block">Jenny Wilson</span>
+            </div>
+
+            <div class="post-entry-1 border-bottom">
+              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="/single-post">10 Life-Changing Hacks Every Working Mom Should Know</a></h2>
+              <span class="author mb-3 d-block">Jenny Wilson</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Culture Category Section -->
+   
+   {% endfor %}
+  </main><!-- End #main -->
+  {% include "footer.html" %}

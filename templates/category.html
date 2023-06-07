@@ -1,0 +1,48 @@
+{% include "header.html" %}
+<body>
+  <main id="main">
+    <section>
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-9" data-aos="fade-up">
+            <h3 class="category-title">Category: {{categoryData.category}}</h3>
+
+            {% for cd in categoryData %}
+            <div class="d-md-flex post-entry-2 half">
+              <a href="/single-post/{{cd.url}}" class="me-4 thumbnail">
+                <img src="/media/{{cd.banner}}" alt="" class="img-fluid">
+              </a>
+              <div>
+                <div class="post-meta"><span class="date">{{cd.category}}</span> <span class="mx-1">&bullet;</span> <span>{{cd.date}}</span></div>
+                <h3><a href="/single-post/{{cd.url}}">{{cd.Title}}</a></h3>
+                <p>{{cd.description}}</p>
+                <div class="d-flex align-items-center author">
+                  <div class="photo"><img src="/media/images/person.png" alt="" class="img-fluid"></div>
+                  <div class="name">
+                    <h3 class="m-0 p-0">{{cd.author}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {%empty%}
+            <div class="alert alert-warning" role="alert">
+              <h1> NO DATA FOUND FOR {{category}}</h1>
+            </div>
+            {% endfor %}
+
+            <div class="text-start py-4">
+              <div class="custom-pagination">
+                <a href="#" class="prev">Prevous</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#" class="next">Next</a>
+              </div>
+            </div>
+          </div>
+
+          {% include "Sidebar.html" %}  
+          {% include "footer.html" %}
